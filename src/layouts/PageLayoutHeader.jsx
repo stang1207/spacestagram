@@ -14,8 +14,8 @@ import PageLayoutHeaderLink from './PageLayoutHeaderLink';
 function PageLayoutHeader() {
   const { toggleColorMode } = useColorMode();
   const colorModeIcon = useColorModeValue(
-    <GiMoon size="1.25em" />,
-    <GiSunSpear size="1.25em" />
+    <GiMoon size="1.15em" />,
+    <GiSunSpear size="1.15em" />
   );
   const colorModeIconColor = useColorModeValue('white', 'black');
   const headerBgColor = useColorModeValue(
@@ -47,31 +47,38 @@ function PageLayoutHeader() {
         py={{ base: 4, md: 6 }}
       >
         {/* Logo */}
-        <ChakraLink to="/">
+        <ChakraLink to="/" flex="1">
           <Heading fontSize="clamp(1.25rem, 1.1923rem + 0.2564vw, 1.5rem)">
             Spacestagram
           </Heading>
         </ChakraLink>
 
         {/* Navbar Right Menu */}
-        <Flex alignItems="center" gap="6">
-          {/* Navbar Menu Items */}
-          <Flex gap="8" as="ul" listStyleType="none">
-            <PageLayoutHeaderLink to="/">Home</PageLayoutHeaderLink>
-            <PageLayoutHeaderLink to="/myfavorites">
-              My Favorites
-            </PageLayoutHeaderLink>
-          </Flex>
-          {/* Navbar Switch Color Mode Button */}
-          <IconButton
-            size="sm"
-            aria-label="Switch to light or dark mode"
-            icon={colorModeIcon}
-            colorScheme="whatsapp"
-            color={colorModeIconColor}
-            onClick={() => toggleColorMode()}
-          />
+
+        <Flex
+          gap={{ base: 8, md: 12 }}
+          as="ul"
+          listStyleType="none"
+          alignItems="center"
+        >
+          {/* Navbar Right Menu Item */}
+          <PageLayoutHeaderLink to="/">Home</PageLayoutHeaderLink>
+          <PageLayoutHeaderLink to="/myfavorites">
+            My Favorites
+          </PageLayoutHeaderLink>
+          <Box as="li">
+            <IconButton
+              display="inline-flex"
+              size="sm"
+              aria-label="Switch to light or dark mode"
+              icon={colorModeIcon}
+              colorScheme="whatsapp"
+              color={colorModeIconColor}
+              onClick={() => toggleColorMode()}
+            />
+          </Box>
         </Flex>
+        {/* Navbar Switch Color Mode Button */}
       </Container>
     </Box>
   );

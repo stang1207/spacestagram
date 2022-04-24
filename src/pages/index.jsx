@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Banner from '@/components/Banner/Banner';
 
 export default function Home() {
   return (
@@ -7,11 +8,10 @@ export default function Home() {
         <title>Spacestagram - Home</title>
         <meta
           name="description"
-          content="Spacestagram, an web application that provides you daily pictures of our fascinating universe with brief explanations written by astronomers."
+          content="Spacestagram, an web application that provides you daily pictures of our fascinating universe."
         />
-        <link rel="icon" href="/icons/favicon.ico" />
       </Head>
-      <h1>Hello World!</h1>
+      <Banner />
     </>
   );
 }

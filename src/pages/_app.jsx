@@ -1,3 +1,4 @@
+import 'focus-visible';
 import { ChakraProvider } from '@chakra-ui/react';
 import theme from '@/theme';
 import PageLayout from '@/layouts/PageLayout';

@@ -15,7 +15,6 @@ function PageLayoutHeaderLink({ to, children }) {
       as="li"
       whileHover={{
         scale: 1.2,
-        color: '#31c842',
       }}
       whileTap={{
         scale: 1.05,
@@ -24,7 +23,10 @@ function PageLayoutHeaderLink({ to, children }) {
     >
       <ChakraLink
         to={to}
-        fontSize="clamp(0.8rem, 0.7538rem + 0.2051vw, 1rem)"
+        fontSize="clamp(0.85rem, 0.7538rem + 0.2051vw, 1rem)"
+        _hover={{
+          color: 'cta.main',
+        }}
         color={headerLinkColor}
       >
         {children}
