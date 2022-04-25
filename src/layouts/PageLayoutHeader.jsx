@@ -62,8 +62,8 @@ function PageLayoutHeader() {
         >
           {/* Navbar Right Menu Item */}
           <PageLayoutHeaderLink to="/">Home</PageLayoutHeaderLink>
-          <PageLayoutHeaderLink to="/myfavorites">
-            My Favorites
+          <PageLayoutHeaderLink to="/favorites">
+            My Favorite List
           </PageLayoutHeaderLink>
           <Box as="li">
             <IconButton

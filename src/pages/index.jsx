@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import { useState } from 'react';
+import { nanoid } from 'nanoid';
 import Banner from '@/components/Banner/Banner';
 import PhotoList from '@/components/PhotoList/PhotoList';
 
@@ -28,6 +29,7 @@ export async function getServerSideProps() {
   const modifiedPhotos = data.map((photo) => ({
     ...photo,
     isPhotoLiked: false,
+    id: nanoid(),
   }));
   return {
     props: {

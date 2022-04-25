@@ -9,37 +9,23 @@ import {
 import { FaHeart, FaShareAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 import ChakraImage from '@/components/Base/ChakraImage';
+import ChakraLink from '@/components/Base/ChakraLink';
 import PhotoListCardIcon from '@/components/PhotoList/PhotoListCardIcon';
 
 const MotionFlex = motion(Flex);
 
-function PhotoListCard({ photo, photos, setPhotos }) {
+function PhotoListCard({ photo, toggleFavorite, ...props }) {
   const [showText, setShowText] = useState(false);
   const trimmedDescription =
     photo.explanation.length >= 100
       ? `${photo.explanation.slice(0, 100)}...`
       : photo.explanation;
 
-  // const [localPhotos, setLocalPhotos] = useLocalStorage('photos', []);
-
-  // const toggleIsPhotoLiked = (photoURL) => {
-  //   const targetPhoto = photos.find(
-  //     (p) => p.url === photoURL || p.thumbnail_url === photoURL
-  //   );
-  //   targetPhoto.isPhotoLiked = !targetPhoto.isPhotoLiked;
-  //   return setPhotos(photos);
-  // };
-
-  // const onFavoriteClick = async (photoData) => {
-  //   await toggleIsPhotoLiked(photoData.url);
-  //   setLocalPhotos();
-  // };
-
   return (
     <MotionFlex
       flexDir="column"
       w="full"
-      bg={useColorModeValue('whiteAlpha.500', 'gray.700')}
+      bg={useColorModeValue('white', 'gray.700')}
       boxShadow="0 3px 10px rgba(0,0,0,0.3)"
       rounded="2xl"
       overflow="hidden"
@@ -48,8 +34,9 @@ function PhotoListCard({ photo, photos, setPhotos }) {
         scale: 1.05,
         boxShadow: '0 5px 25px rgba(0,0,0,0.5)',
       }}
+      {...props}
     >
-      <AspectRatio minW="full" ratio={16 / 9} pos="relative">
+      <AspectRatio minW="full" ratio={16 / 10} pos="relative">
         <ChakraImage
           layout="fill"
           objectFit="cover"
@@ -57,7 +44,7 @@ function PhotoListCard({ photo, photos, setPhotos }) {
           src={photo.thumbnail_url || photo.url}
           placeholder="blur"
           blurDataURL={photo.thumbnail_url || photo.url}
-          quality={50}
+          quality={70}
         />
       </AspectRatio>
       <Flex
@@ -92,16 +79,21 @@ function PhotoListCard({ photo, photos, setPhotos }) {
           <PhotoListCardIcon
             display="flex"
             icon={FaHeart}
-            mr="2"
-            color={photo.isPhotoLiked ? 'pink.400' : 'pink.200'}
-            _hover={{ color: photo.isPhotoLiked ? 'pink.400' : 'pink.200' }}
-            // onClick={() => onFavoriteClick(photo)}
+            mr="3"
+            color={photo.isPhotoLiked ? 'red.400' : 'red.200'}
+            _hover={{ color: photo.isPhotoLiked ? 'red.400' : 'red.200' }}
+            onClick={toggleFavorite}
           />
-          <PhotoListCardIcon
-            display="flex"
-            icon={FaShareAlt}
-            color="blue.500"
-          />
+          <ChakraLink
+            to={`https://www.facebook.com/sharer/sharer.php?u=${photo.url}`}
+            target="_blank"
+          >
+            <PhotoListCardIcon
+              display="flex"
+              icon={FaShareAlt}
+              color="blue.500"
+            />
+          </ChakraLink>
           <Text fontSize="sm" color="gray.500" textAlign="end" flex="1">
             {photo.date}
           </Text>

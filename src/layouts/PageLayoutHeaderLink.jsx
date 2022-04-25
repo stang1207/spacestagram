@@ -28,6 +28,7 @@ function PageLayoutHeaderLink({ to, children }) {
           color: 'cta.main',
         }}
         color={headerLinkColor}
+        whiteSpace="nowrap"
       >
         {children}
       </ChakraLink>

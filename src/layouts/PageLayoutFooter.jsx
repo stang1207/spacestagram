@@ -7,7 +7,7 @@ function PageLayoutFooter() {
   return (
     <Flex
       as="footer"
-      py="4"
+      py="5"
       bg={footerBgColor}
       transition="background-color color"
       transitionDuration=".35s"

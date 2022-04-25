@@ -11,7 +11,7 @@ const customeTheme = extendTheme({
     },
     darkbrand: {
       text: '#f6f6f8',
-      background: '#1A202C',
+      background: '#0f1116;',
     },
     cta: {
       main: '#33CA36',

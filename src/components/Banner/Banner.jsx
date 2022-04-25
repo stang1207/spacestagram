@@ -21,13 +21,13 @@ function Banner() {
       gap={{ base: 4, md: 6, lg: 8 }}
     >
       <Heading
-        fontSize="clamp(1rem, 0.7115rem + 1.2821vw, 2.25rem)"
+        fontSize="clamp(1rem, 0.6538rem + 1.5385vw, 2.5rem)"
         color="cta.main"
         as="h1"
       >
         Start Exploring The Universe Today!
       </Heading>
-      <BannerLink to="/myfavorites">My Favorite Pictures</BannerLink>
+      <BannerLink to="/myfavorites">My Favorite List</BannerLink>
     </Box>
   );
 }
