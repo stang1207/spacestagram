@@ -14,10 +14,9 @@ import PageLayoutHeaderLink from './PageLayoutHeaderLink';
 function PageLayoutHeader() {
   const { toggleColorMode } = useColorMode();
   const colorModeIcon = useColorModeValue(
-    <GiMoon size="1.15em" />,
-    <GiSunSpear size="1.15em" />
+    <GiMoon size="1.15em" color="white" />,
+    <GiSunSpear size="1.15em" color="black" />
   );
-  const colorModeIconColor = useColorModeValue('white', 'black');
   const headerBgColor = useColorModeValue(
     'brand.background',
     'darkbrand.background'
@@ -73,7 +72,6 @@ function PageLayoutHeader() {
               aria-label="Switch to light or dark mode"
               icon={colorModeIcon}
               colorScheme="whatsapp"
-              color={colorModeIconColor}
               onClick={() => toggleColorMode()}
             />
           </Box>
