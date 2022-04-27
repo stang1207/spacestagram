@@ -27,7 +27,7 @@ function Banner() {
       >
         Start Exploring The Universe Today!
       </Heading>
-      <BannerLink to="/myfavorites">My Favorite List</BannerLink>
+      <BannerLink to="/favorites">My Favorite List</BannerLink>
     </Box>
   );
 }
