@@ -76,12 +76,13 @@ function PhotoListCard({
           _hover={{ color: useColorModeValue('brand.text', 'darkbrand.text') }}
           cursor="pointer"
           onClick={toggleText}
+          flex="1"
           noOfLines={showText ? 'unset' : 4}
         >
           {photo.explanation || 'No description available.'}
         </Text>
 
-        <Flex alignItems="center" mt="4">
+        <Flex alignItems="end" mt="4">
           <PhotoListCardIcon
             display="flex"
             icon={FaHeart}

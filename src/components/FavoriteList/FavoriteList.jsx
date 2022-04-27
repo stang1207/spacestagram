@@ -15,6 +15,7 @@ function FavoriteList() {
     <Flex
       flexDir="column"
       py={{ base: 8, md: 12 }}
+      px="12"
       gap="12"
       as="section"
       alignItems="center"
@@ -35,7 +36,7 @@ function FavoriteList() {
             <PhotoListCard
               isFavoriteListCard
               photo={photo}
-              width="clamp(20rem, 30vw, 40rem)"
+              width="clamp(20rem, 15.5rem + 20vw, 40rem)"
               toggleFavorite={() => removeFavoritePhoto(photo)}
               layoutId={photo.id}
             />
