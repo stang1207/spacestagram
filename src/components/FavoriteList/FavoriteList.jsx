@@ -1,53 +1,47 @@
 import { Flex } from '@chakra-ui/react';
+import { AnimatePresence, motion } from 'framer-motion';
 import PhotoListCard from '@/components/PhotoList/PhotoListCard';
-import {
-  addLocalStorageItem,
-  removeLocalStorageItem,
-} from '@/utils/localStorageHelper';
-import useFetchPhotos from '@/hooks/useFetchPhotos';
+import useLocalStorage from '@/hooks/useLocalStorage';
+
+const MotionFlex = motion(Flex);
 
 function FavoriteList() {
-  const { data: photos, setData: setPhotos } = useFetchPhotos();
-  const toggleFavorite = (photo) => {
-    if (!photo.isPhotoLiked) {
-      const newPhotos = photos.map((p) => {
-        if (p.id === photo.id) {
-          const likedPhoto = { ...p, isPhotoLiked: true };
-          addLocalStorageItem('favorites', likedPhoto);
-          return { ...p, isPhotoLiked: true };
-        }
-        return p;
-      });
-      setPhotos(newPhotos);
-    } else {
-      const newPhotos = photos.map((p) => {
-        if (p.id === photo.id) {
-          removeLocalStorageItem('favorites', photo);
-          return { ...p, isPhotoLiked: false };
-        }
-        return p;
-      });
-      setPhotos(newPhotos);
-    }
+  const [favoritePhotos, setFavoritePhotos] = useLocalStorage('favorites', []);
+  const removeFavoritePhoto = (photo) => {
+    const newPhotos = favoritePhotos.filter((p) => p.id !== photo.id);
+    setFavoritePhotos(newPhotos);
   };
-
   return (
     <Flex
       flexDir="column"
-      alignItems="center"
       py={{ base: 8, md: 12 }}
       gap="12"
       as="section"
+      alignItems="center"
     >
-      {photos &&
-        photos.map((photo) => (
-          <PhotoListCard
+      <AnimatePresence>
+        {favoritePhotos.map((photo, index) => (
+          <MotionFlex
             key={photo.id}
-            photo={photo}
-            toggleFavorite={() => toggleFavorite(photo)}
-            width="clamp(18.75rem, 32.5vw, 500px)"
-          />
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ type: 'tween', duration: 0.4 }}
+            alignSelf={{
+              base: 'center',
+              lg: index % 2 === 0 ? 'flex-end' : 'flex-start',
+            }}
+          >
+            <PhotoListCard
+              isFavoriteListCard
+              photo={photo}
+              width="clamp(20rem, 30vw, 40rem)"
+              toggleFavorite={() => removeFavoritePhoto(photo)}
+              layoutId={photo.id}
+            />
+          </MotionFlex>
         ))}
+      </AnimatePresence>
     </Flex>
   );
 }

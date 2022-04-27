@@ -34,7 +34,6 @@ function PageLayoutHeader() {
       zIndex="1"
       boxShadow="md"
     >
-      {/* Navbar */}
       <Container
         maxW="container.lg"
         as="nav"
@@ -45,22 +44,17 @@ function PageLayoutHeader() {
         alignItems="center"
         py={{ base: 4, md: 6 }}
       >
-        {/* Logo */}
         <ChakraLink to="/" flex="1">
           <Heading fontSize="clamp(1.25rem, 1.1923rem + 0.2564vw, 1.5rem)">
             Spacestagram
           </Heading>
         </ChakraLink>
-
-        {/* Navbar Right Menu */}
-
         <Flex
           gap={{ base: 8, md: 12 }}
           as="ul"
           listStyleType="none"
           alignItems="center"
         >
-          {/* Navbar Right Menu Item */}
           <PageLayoutHeaderLink to="/">Home</PageLayoutHeaderLink>
           <PageLayoutHeaderLink to="/favorites">
             My Favorite List
@@ -76,7 +70,6 @@ function PageLayoutHeader() {
             />
           </Box>
         </Flex>
-        {/* Navbar Switch Color Mode Button */}
       </Container>
     </Box>
   );

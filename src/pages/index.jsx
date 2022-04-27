@@ -21,16 +21,21 @@ export default function Home({ photos: photoData }) {
   );
 }
 
-export async function getServerSideProps() {
-  const res = await fetch(
+export async function getServerSideProps({ res }) {
+  const dataRes = await fetch(
     `https://api.nasa.gov/planetary/apod?api_key=${process.env.NASA_API_KEY}&count=12&thumbs=true`
   );
-  const data = await res.json();
+  const data = await dataRes.json();
   const modifiedPhotos = data.map((photo) => ({
     ...photo,
     isPhotoLiked: false,
     id: nanoid(),
   }));
+
+  res.setHeader(
+    'Cache-Control',
+    'public, s-maxage=10, stale-while-revalidate=59'
+  );
   return {
     props: {
       photos: modifiedPhotos,

@@ -1,38 +1,36 @@
 import { Box } from '@chakra-ui/react';
-import { useRouter } from 'next/router';
-import { AnimatePresence, motion } from 'framer-motion';
+// import { useRouter } from 'next/router';
+// import { AnimatePresence, motion } from 'framer-motion';
 import PageLayoutHeader from '@/layouts/PageLayoutHeader';
 import PageLayoutFooter from '@/layouts/PageLayoutFooter';
 
-const MotionBox = motion(Box);
+// const MotionBox = motion(Box);
 
-const fadeInVariants = {
-  hidden: { opacity: 0, y: -100 },
-  enter: { opacity: 1, y: 0 },
-  exit: { opacity: 0, y: 100 },
-};
+// const fadeInVariants = {
+//   hidden: { opacity: 0, y: -100 },
+//   enter: { opacity: 1, y: 0 },
+//   exit: { opacity: 0, y: 100 },
+// };
 
 function PageLayout({ children }) {
-  const router = useRouter();
+  // const router = useRouter();
   return (
     <>
       <PageLayoutHeader />
-      <AnimatePresence exitBeforeEnter>
-        <MotionBox
-          as="main"
-          flex="1"
-          display="flex"
-          flexDir="column"
-          key={router.pathname}
-          variants={fadeInVariants}
-          initial="hidden"
-          animate="enter"
-          exit="exit"
-          transition={{ type: 'linear', duration: 0.4 }}
-        >
-          {children}
-        </MotionBox>
-      </AnimatePresence>
+      <Box
+        as="main"
+        flex="1"
+        display="flex"
+        flexDir="column"
+        // key={router.pathname}
+        // variants={fadeInVariants}
+        // initial="hidden"
+        // animate="enter"
+        // exit="exit"
+        // transition={{ type: 'linear', duration: 0.35 }}
+      >
+        {children}
+      </Box>
       <PageLayoutFooter />
     </>
   );

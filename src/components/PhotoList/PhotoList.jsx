@@ -1,32 +1,20 @@
 import { Box, Container, Heading, SimpleGrid } from '@chakra-ui/react';
 import PhotoListCard from '@/components/PhotoList/PhotoListCard';
-import {
-  addLocalStorageItem,
-  removeLocalStorageItem,
-} from '@/utils/localStorageHelper';
+import useLocalStorage from '@/hooks/useLocalStorage';
 
 function PhotoList({ photos, setPhotos }) {
+  const [favorites, setFavorites] = useLocalStorage('favorites', []);
   const toggleFavorite = (photo) => {
-    if (!photo.isPhotoLiked) {
-      const newPhotos = photos.map((p) => {
-        if (p.id === photo.id) {
-          const likedPhoto = { ...p, isPhotoLiked: true };
-          addLocalStorageItem('favorites', likedPhoto);
-          return { ...p, isPhotoLiked: true };
-        }
-        return p;
-      });
-      setPhotos(newPhotos);
+    setPhotos(
+      photos.map((p) =>
+        p.id === photo.id ? { ...photo, isPhotoLiked: !photo.isPhotoLiked } : p
+      )
+    );
+    if (photo.isPhotoLiked) {
+      const newFavorites = favorites.filter((p) => p.id !== photo.id);
+      setFavorites(newFavorites);
     } else {
-      const newPhotos = photos.map((p) => {
-        if (p.id === photo.id) {
-          const removedPhoto = { ...p, isPhotoLiked: false };
-          removeLocalStorageItem('favorites', removedPhoto);
-          return { ...p, isPhotoLiked: false };
-        }
-        return p;
-      });
-      setPhotos(newPhotos);
+      setFavorites([...favorites, { ...photo, isPhotoLiked: true }]);
     }
   };
 
@@ -49,10 +37,10 @@ function PhotoList({ photos, setPhotos }) {
           Pictures of the Day
         </Heading>
         <SimpleGrid
-          columns={{ base: 1, md: 2, xl: 3 }}
+          columns={{ base: 1, md: 2 }}
           justifyItems="center"
-          alignItems="flex-start"
-          gridGap="10"
+          alignItems="start"
+          gridGap="12"
           mt={{ base: 10, md: 12 }}
           px={{ base: 10, md: 8, lg: 0 }}
           as="section"

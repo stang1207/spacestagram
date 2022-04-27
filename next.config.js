@@ -4,7 +4,7 @@ const nextConfig = {
   reactStrictMode: true,
   removeConsole: true,
   swcMinify: true,
-  experimental: { esmExternals: true, emotion: true },
+  experimental: { emotion: true },
   images: {
     formats: ['image/avif', 'image/webp'],
     domains: [
@@ -16,6 +16,7 @@ const nextConfig = {
       'player.vimeo.com',
       'solarsystem.nasa.gov',
       'sci.esa.int',
+      'vestatrek.jpl.nasa.gov',
     ],
   },
 };
