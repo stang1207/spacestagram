@@ -1,8 +1,8 @@
-import ChakraLink from '@/components/Base/ChakraLink';
+import BaseLink from '@/components/Base/BaseLink';
 
 function BannerLink({ to, children, ...props }) {
   return (
-    <ChakraLink
+    <BaseLink
       to={to}
       display="inline-block"
       borderRadius="md"
@@ -19,7 +19,7 @@ function BannerLink({ to, children, ...props }) {
       {...props}
     >
       {children}
-    </ChakraLink>
+    </BaseLink>
   );
 }
 export default BannerLink;

@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Box, useColorModeValue } from '@chakra-ui/react';
-import ChakraLink from '@/components/Base/ChakraLink';
+import BaseLink from '@/components/Base/BaseLink';
 
 const MotionNavItem = motion(Box);
 
@@ -21,7 +21,7 @@ function PageLayoutHeaderLink({ to, children }) {
       }}
       transition={{ type: 'spring', stiffness: 300 }}
     >
-      <ChakraLink
+      <BaseLink
         to={to}
         fontSize="clamp(0.85rem, 0.7538rem + 0.2051vw, 1rem)"
         _hover={{
@@ -31,7 +31,7 @@ function PageLayoutHeaderLink({ to, children }) {
         whiteSpace="nowrap"
       >
         {children}
-      </ChakraLink>
+      </BaseLink>
     </MotionNavItem>
   );
 }

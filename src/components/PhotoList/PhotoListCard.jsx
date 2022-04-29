@@ -8,8 +8,8 @@ import {
 } from '@chakra-ui/react';
 import { FaHeart, FaShareAlt } from 'react-icons/fa';
 import { motion } from 'framer-motion';
-import ChakraImage from '@/components/Base/ChakraImage';
-import ChakraLink from '@/components/Base/ChakraLink';
+import BaseImage from '@/components/Base/BaseImage';
+import BaseLink from '@/components/Base/BaseLink';
 import PhotoListCardIcon from '@/components/PhotoList/PhotoListCardIcon';
 
 const MotionFlex = motion(Flex);
@@ -41,7 +41,7 @@ function PhotoListCard({
       {...props}
     >
       <AspectRatio maxH="18.75rem" ratio={16 / 9} pos="relative">
-        <ChakraImage
+        <BaseImage
           layout="fill"
           objectFit="cover"
           alt={photo.title}
@@ -91,7 +91,7 @@ function PhotoListCard({
             _hover={{ color: photo.isPhotoLiked ? 'red.400' : 'red.200' }}
             onClick={toggleFavorite}
           />
-          <ChakraLink
+          <BaseLink
             to={`https://www.facebook.com/sharer/sharer.php?u=${photo.url}`}
             target="_blank"
             aria-label="Share on Facebook"
@@ -101,8 +101,8 @@ function PhotoListCard({
               icon={FaShareAlt}
               color="blue.500"
             />
-          </ChakraLink>
-          <Text color="gray.500" textAlign="end" flex="1">
+          </BaseLink>
+          <Text color="gray.500" textAlign="end" flex="1" fontSize="sm">
             {photo.date}
           </Text>
         </Flex>

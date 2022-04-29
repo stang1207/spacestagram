@@ -8,7 +8,7 @@ import {
   useColorModeValue,
 } from '@chakra-ui/react';
 import { GiMoon, GiSunSpear } from 'react-icons/gi';
-import ChakraLink from '@/components/Base/ChakraLink';
+import BaseLink from '@/components/Base/BaseLink';
 import PageLayoutHeaderLink from './PageLayoutHeaderLink';
 
 function PageLayoutHeader() {
@@ -44,11 +44,11 @@ function PageLayoutHeader() {
         alignItems="center"
         py={{ base: 4, md: 6 }}
       >
-        <ChakraLink to="/" flex="1">
+        <BaseLink to="/" flex="1">
           <Heading fontSize="clamp(1.25rem, 1.1923rem + 0.2564vw, 1.5rem)">
             Spacestagram
           </Heading>
-        </ChakraLink>
+        </BaseLink>
         <Flex
           gap={{ base: 8, md: 12 }}
           as="ul"
